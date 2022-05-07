@@ -8,7 +8,6 @@ interface El extends HTMLElement {
   childNodes: NodeListOf<ChEl>
 }
 
-const sampleText = await (await fetch('./sample.txt')).text()
 const appState = {
   mode: 'normal',
   topLine: 0,
@@ -42,13 +41,10 @@ const properties = {
     letterSpacing: 0.2
   }
 }
-let txtbox: El
-let array = sampleText.split(/\n/g).map((line: string) => {
-  return {
-    txt: line,
-    active: false
-  }
-})
+let txtbox: El, sampleText: string, array: {
+  txt: string,
+  active: boolean
+}[]
 
 function convertRemToPixels(rem: number): number {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -400,7 +396,15 @@ function eventListeners() {
   }
 }
 
-function main() {
+async function main() {
+  sampleText = await (await fetch('./sample.txt')).text()
+  sampleText.split(/\n/g).map((line: string) => {
+    return {
+      txt: line,
+      active: false
+    }
+  })
+
   const el = document.getElementById("textbox")
   if (el) txtbox = el as El
   else return
