@@ -398,7 +398,7 @@ function eventListeners() {
 
 async function main() {
   sampleText = await (await fetch('./sample.txt')).text()
-  sampleText.split(/\n/g).map((line: string) => {
+  array = sampleText.split(/\n/g).map((line: string) => {
     return {
       txt: line,
       active: false
