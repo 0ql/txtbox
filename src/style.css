@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   outline: none;
   border: none;
   box-sizing: border-box;
-  font-family: fantasy;
+  font-family: 'Fira Mono', monospace;
   font-size: 1;
 }
 
